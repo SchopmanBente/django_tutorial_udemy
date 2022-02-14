@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available polls</title>
+</head>
+<body>
+{% block content %}
+<h2>Questions</h2>
+<ul>
+    {% for q in object_list %}
+    <a href="/polls/{{q.id}}"
+    <li>{{ q.question_text }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>
