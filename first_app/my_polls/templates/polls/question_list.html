@@ -1,11 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Available polls</title>
-</head>
-<body>
+{% extends 'polls/base.html' %}
 {% block content %}
 <h2>Questions</h2>
 <ul>
@@ -16,5 +9,4 @@
     {% endfor %}
 </ul>
 {% endblock %}
-</body>
-</html>
+
