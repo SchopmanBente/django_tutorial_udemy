@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 #from django.template import loader,RequestContext
+from django.shortcuts import render
+
 from .models import Question
 from django.views.generic import ListView
 
@@ -19,8 +21,10 @@ def index(request):
 class QuestionsListView(ListView):
     model = Question
     context_object_name = "Available polls"
+
 def detail(request, question_id):
-    return HttpResponse("This is the detail view of question: %s" % question_id)
+    q = Question.objects.get(pk=question_id)
+    return render(request,"polls/detail.html",{"question":q})
 
 
 def results(request, question_id):

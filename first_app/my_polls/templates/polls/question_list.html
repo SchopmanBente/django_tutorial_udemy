@@ -10,8 +10,9 @@
 <h2>Questions</h2>
 <ul>
     {% for q in object_list %}
-    <a href="/polls/{{q.id}}"
-    <li>{{ q.question_text }}</li>
+
+    <li>  <a href="/polls/{{q.id}}"><b>{{ q.question_text }}</b>   </a></li>
+
     {% endfor %}
 </ul>
 {% endblock %}
