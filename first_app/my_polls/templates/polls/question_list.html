@@ -4,7 +4,7 @@
 <ul>
     {% for q in object_list %}
 
-    <li>  <a href="/polls/{{q.id}}"><b>{{ q.question_text }}</b>   </a></li>
+    <li><a href={% url 'myapp:detail' question_id=q.id %}><b>{{ q.question_text }}</b>   </a></li>
 
     {% endfor %}
 </ul>

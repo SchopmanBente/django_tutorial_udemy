@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 # Create your models here.
 class Question(models.Model):
@@ -15,6 +15,9 @@ class Question(models.Model):
         # Add in a QuerySet of all the Questions
         context['question_list'] = Question.objects.all()
         return context
+
+    def get_absolute_url(self):
+        return reverse("polls.detail", kwargs={"id": self.id })
 
 
 class Choice(models.Model):
