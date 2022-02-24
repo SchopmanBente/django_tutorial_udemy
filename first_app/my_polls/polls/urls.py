@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from .views import QuestionsListView
 
-app_name = 'myapp'
+app_name = 'polls'
 
 urlpatterns = [
     path('', QuestionsListView.as_view(), name="index"),
