@@ -1,0 +1,50 @@
+{% extends 'polls/base.html' %}
+{% block scripts %}
+<script type="text/javascript">
+
+    function isClicked(request){
+         var checkedRadio = document.querySelector("input[type=radio]:checked");
+
+         console.log(CheckedRadio.id);
+         alert(checkedRadio.id)
+         alert("Dit werkt wel hoor!");
+
+    }
+
+
+ /*
+   document.querySelector("input[type=radio]:checked").addEventListener("click", function(){
+           console.log(this.getAttribute('value'));
+   });
+   */
+</script>
+{% endblock %}
+{% block content %}
+
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}
+<p>
+    <bold>{{error_message}}</bold>
+</p>
+{% endif %}
+
+
+<form action="{% url 'polls:vote' question_id=question.id %}" method="post">
+    {% csrf_token %}
+    <div id="Choices">
+        {% for radio in question.choice_set.all%}
+        <label for="{{ radio.id_for_label }}" value="{{radio.id}}">
+            <span class="radio"><input id="{{radio.id}}" name="polls" type="radio"
+                                       value="{{ radio.choice_text}}"/></span>
+            {{ radio.choice_text}}
+        </label>
+
+        {% endfor %}
+    </div>
+    <input type="submit" value="Vote!" onclick="isClicked()">
+</form>
+<script type="text/javascript">
+</script>
+
+{% endblock %}

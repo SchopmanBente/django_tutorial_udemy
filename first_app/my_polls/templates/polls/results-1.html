@@ -1,0 +1,27 @@
+{% extends 'polls/base.html' %}
+{% block style %}
+<style>
+   .choosen{
+        color: green
+   }
+
+
+
+</style>
+
+
+{% endblock %}
+{% block content %}
+<h1>{{ question.question_text }}</h1>
+<ul>
+    {% for choice in question.choice_set.all%}
+    {% if choice is choosen_choice %}
+        <li class="choosen"><b>{{ choice.choice_text }}</b> <b><i>-- {{ choice.votes}} votes {{ choice.votes | pluralize }}</b></i>
+        </li>
+    {% else %}
+        <li><b>{{ choice.choice_text }}</b> <b><i>-- {{ choice.votes}} votes {{ choice.votes | pluralize }}</b></i></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}

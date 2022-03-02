@@ -9,18 +9,15 @@
 </p>
 {% endif %}
 
-<form action="{% url 'polls:vote' question.id %)" method="post">
+
+<form action="{% url 'polls:vote' question_id=question.id %}" method="post">
     {% csrf_token %}
-    {% for choice in question.choice_set.all%}
-        <input type="radio" name="choice" id="Choice{{forloop.counter}}" value="{{ Choice.id}}">
-        <label for="Choice{{forloop.counter}}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
+    <select name="choices" id="choices">
+        {% for choice in question.choice_set.all %}
+        <option value="{{ choice.pk }}">{{ choice.choice_text }}</option>
+        {% endfor %}
+    </select>
     <input type="submit" value="Vote!">
 </form>
-<h2>Choices</h2>
-<ul>
-    {% for choice in question.choice_set.all%}
-    <li>{{ choice.choice_text }}</li>
-    {% endfor %}
-</ul>
+
 {% endblock %}

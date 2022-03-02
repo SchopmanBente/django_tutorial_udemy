@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% block style %}
+    {% endblock %}
 </head>
 <body>
 {% include "polls/header.html" %}
+{% block scripts %}
+{% endblock %}
 {% block content %}
 {% endblock %}
 {% include "polls/footer.html" %}
