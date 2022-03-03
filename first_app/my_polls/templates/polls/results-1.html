@@ -23,5 +23,6 @@
     {% endif %}
     {% endfor %}
 </ul>
+<a href="{% url 'polls:detail' question_id=question.id %}">Vote again!</a>
 
 {% endblock %}

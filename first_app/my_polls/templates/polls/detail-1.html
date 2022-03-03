@@ -2,21 +2,28 @@
 {% block scripts %}
 <script type="text/javascript">
 
-    function isClicked(request){
+     function isClicked(request){
          var checkedRadio = document.querySelector("input[type=radio]:checked");
 
-         console.log(CheckedRadio.id);
-         alert(checkedRadio.id)
+         console.log(checkedRadio);
+         alert(checkedRadio);
          alert("Dit werkt wel hoor!");
+         return  checkedRadio;
+
 
     }
 
 
- /*
-   document.querySelector("input[type=radio]:checked").addEventListener("click", function(){
-           console.log(this.getAttribute('value'));
-   });
-   */
+
+
+    window.onload = function(){
+
+
+         isClicked();
+
+    }
+
+
 </script>
 {% endblock %}
 {% block content %}
@@ -36,7 +43,7 @@
         {% for radio in question.choice_set.all%}
         <label for="{{ radio.id_for_label }}" value="{{radio.id}}">
             <span class="radio"><input id="{{radio.id}}" name="polls" type="radio"
-                                       value="{{ radio.choice_text}}"/></span>
+                                       value="{{ radio.id}}"/></span>
             {{ radio.choice_text}}
         </label>
 
@@ -44,7 +51,6 @@
     </div>
     <input type="submit" value="Vote!" onclick="isClicked()">
 </form>
-<script type="text/javascript">
-</script>
+
 
 {% endblock %}
